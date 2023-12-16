@@ -1,0 +1,529 @@
+openapi: 3.0.0
+info:
+  title: WorkWise
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /getProject:
+    get:
+      summary: Get a specific project
+      parameters:
+        - name: projectId
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "1.0"
+        - name: projectName
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "abc"
+        - name: projectDescription
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "abc"
+        - name: tasks
+          in: query
+          required: true
+          schema:
+            type: []
+          example: "project123"
+        - name: teamMembers
+          in: query
+          required: true
+          schema:
+            type: []
+          example: "User"
+        - name: projectStartDate
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "21:00:00"
+        - name: projectEndDate
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "21:00:00"
+
+      responses: 
+        200: 
+          description: get sucessfull
+          content: 
+            application/json: 
+              schema: 
+                type: object 
+                $ref: '#/components/schemas/GetProject'
+        401:
+          description: unauthorized request
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Error"
+
+  /updateProject:
+    put:
+      summary: Update Project
+      parameters:
+        - name: projectId
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "1.0"
+        - name: projectName
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "abc"
+        - name: projectDescription
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "abc"
+        - name: tasks
+          in: query
+          required: true
+          schema:
+            type: []
+          example: "project123"
+        - name: teamMembers
+          in: query
+          required: true
+          schema:
+            type: []
+          example: "User"
+        - name: projectStartDate
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "21:00:00"
+        - name: projectEndDate
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "21:00:00"
+
+      requestBody:
+        description: Updated project object
+        required: true
+        content:
+          application/json:
+            example: { "name": "Updated Project", "description": "Updated project description" }
+
+      responses: 
+        200: 
+          description: get sucessfull
+          content: 
+            application/json: 
+              schema: 
+                type: object 
+                $ref: '#/components/schemas/UpdatedProject'
+        401:
+          description: unauthorized request
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Error"
+  /deleteProject:
+    delete:
+      summary: Delete a project
+      parameters:
+        - name: projectId
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "project123"
+      responses:
+        '200':
+          description: Project deleted successfully
+        '404':
+          description: Error - Unable to get the response
+          content:
+            application/json:
+              example: { error: "Unable to get the response" }
+
+  /createProject:
+    post:
+      summary: Create a new project
+      description: "Creates a new project. Include 'update' or 'delete' field in the request body for additional functionalities."
+      requestBody:
+        description: Project creation request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreateRequest'
+            example:
+              projectName: "test123"
+              projectDescription: "test project description"
+              tasks: []
+              teamMembers: []
+              projectStartDate: "2023-01-31T12:45:00Z"
+              projectEndDate: "2024-01-31T12:45:00Z"
+      responses:
+        '201':
+          description: Project created successfully
+        '400':
+          description: Bad Request - Invalid input
+          content:
+            application/json:
+              example: { error: "Bad Request - Invalid input" }
+        '404':
+          description: Error - Unable to get the response
+          content:
+            application/json:
+              example: { error: "Unable to get the response" }
+  /projects/{projectId}/getTasks:
+    get:
+      description: Get all tasks of a project
+      parameters:
+        - name: projectId
+          in: path
+          description: ID of the project
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stories:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Task"
+        "401":
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref:  '#/components/schemas/Task'
+                
+  /projects/{projectId}/createTask:
+    post:
+        summary: Create a new task
+        requestBody:
+          description: Task object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Story"
+        responses:
+          "201":
+            description: Task created successfully
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Story"
+          "400":
+            description: Bad request
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/BadRequestError"
+                  
+  /projects/{projectId}/updateTask/{taskId}:
+    put:
+      summary: Update an existing task
+      parameters:
+        - name: projectId
+          in: path
+          description: ID of the project
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Updated task object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTask"
+      responses:
+        "200":
+          description: Task updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Story"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestError"
+  /projects/{projectId}/deleteTask/{taskId}:
+    delete:
+      summary: Delete a task
+      parameters:
+        - name: projectId
+          in: path
+          description: ID of the project
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Task deleted successfully
+        "404":
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+
+components: 
+  schemas: 
+    GetProject:
+        type: object 
+        properties: 
+          projectID:
+            type: string 
+            example: 
+              - 6150 
+          projectName:
+            type: string 
+            example: 
+              - INFO 
+          projectDescription: 
+            type: string 
+            example: 
+              - INFO DES 
+          tasks:
+            $ref: '#/components/schemas/Task'
+
+          teamMembers:
+            $ref: '#/components/schemas/User'
+
+          projectStartDate:
+            type: string 
+            example: 
+              - "15/08/1999 18:00:00"
+
+          projectEndDate:
+            type: string 
+            example: 
+              - "15/08/1999 18:00:00"
+
+    UpdateProject:
+        type: object 
+        properties: 
+          projectID:
+            type: string 
+            example: 
+              - 6150 
+          projectName:
+            type: string 
+            example: 
+              - INFO 
+          projectDescription: 
+            type: string 
+            example: 
+              - INFO DES 
+          tasks:
+            $ref: '#/components/schemas/Task'
+
+          teamMembers:
+            $ref: '#/components/schemas/User'
+
+          projectStartDate:
+            type: string 
+            example: 
+              - "15/08/1999 18:00:00"
+
+          projectEndDate:
+            type: string 
+            example: 
+              - "15/08/1999 18:00:00"
+
+    UpdateTask:
+      type: object
+      properties:
+        taskTitle:
+          type: string
+          example: "Updated Task Title"
+        taskDescription:
+          type: string
+          example: "Updated Task Description"
+        taskType:
+          type: string
+          example: "Feature"
+        taskStatus:
+          type: string
+          example: "Completed"
+        priority:
+          type: string
+          example: "Medium"
+        comments:
+          type: array
+          items:
+            type: string
+        isBug:
+          type: boolean
+          example: true
+        isFeature:
+          type: boolean
+          example: false
+        bugIds:
+          type: array
+          items:
+            type: string
+        featureIds:
+          type: array
+          items:
+            type: string
+        estimatedHours:
+          type: integer
+          example: 15
+
+    ProjectCreateRequest:
+      type: object
+      properties:
+        projectName:
+          type: string
+        projectDescription:
+          type: string
+        tasks:
+          type: array
+          items:
+            type: string
+        teamMembers:
+          type: array
+          items:
+            type: string
+        projectStartDate:
+          type: string
+          format: date-time
+        projectEndDate:
+          type: string
+          format: date-time
+
+    ProjectDeleteRequest:
+      type: object
+      properties:
+        projectID:
+          type: string
+
+    Task:
+      type: object
+      properties: 
+        taskTitle:
+          type: string
+          example: "Task Title"
+        taskDescription:
+          type: string
+          example: "Task Description"
+        taskType:
+          type: string
+          example: "Bug"
+        taskStatus:
+          type: string
+          example: "In Progress"
+        assignees:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        reporter:
+          $ref: '#/components/schemas/User'
+        priority:
+          type: string
+          example: "High"
+        comments:
+          type: array
+          items:
+            type: string
+        isBug:
+          type: boolean
+          example: false
+        isFeature:
+          type: boolean
+          example: true
+        bugIds:
+          type: array
+          items:
+            type: string
+        featureIds:
+          type: array
+          items:
+            type: string
+        estimatedHours:
+          type: integer
+          example: 10
+        createdAt:
+          type: string
+          format: date-time
+          example: "2023-11-14T10:00:00Z"
+        lastUpdatedAt:
+          type: string
+          format: date-time
+          example: "2023-11-14T12:30:00Z"
+    User:
+      type: object
+      properties:
+        profilePicture: 
+          type: string
+          example: "http://www.example.com/user123.jpg"
+        userId:
+          type: string
+          example: "user123"
+        userName:
+          type: string
+          example: "User lastName"
+        email:
+          type: string
+          example: "user123@gmail.com"
+        password:
+          type: string
+          example: "***"
+        
+    Error:
+        type: object 
+        properties: 
+          code:
+            type: string
+            description: error code
+            example: 
+              - authenticationError
+          message:
+            type: string 
+            description: Error message
+            example: 
+              - User is not authorized
+    AuthError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: AuthenticationError
+        message:
+          type: string
+          description: Error Message
+          example: User is not authenticated
+
+    BadRequestError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: BadRequest
+        message:
+          type: string
+          description: Error Message
+          example: Invalid input for creating a story
+  

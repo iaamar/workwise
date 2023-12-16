@@ -1,0 +1,64 @@
+/* Import Tailwind CSS base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base layer styles */
+@layer base {
+  * {
+    @apply focus-visible:outline;
+    @apply focus-visible:outline-2;
+    @apply focus-visible:outline-primary-900;
+    @apply dark:focus-visible:outline-primary-800;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Custom styles */
+.header-logo {
+  /* margin-top: -48px; */
+}
+.custom-datepicker-style {
+  border: 1.5px solid #dee2e6;
+  padding: 5px;
+}
+
+.custom-datepicker-style:focus {
+  border-color: #364fc7;
+}
+.custom-multi-select {
+  padding: 5px;
+  border-radius: 0;
+}
+.custom-multi-select:focus {
+  border: none;
+  outline-color: #364fc7;
+}
+
+.workitem-card {
+  border-radius: 0;
+  border: 1px solid #e2e8f0;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  width: 400px;
+}
+.custom-textarea {
+  resize: none; /* This property controls the resize handle */
+}
+input:focus,
+select:focus,
+option:focus,
+textarea:focus,
+button:focus {
+  outline-color: #364fc7;
+  outline-width: 1px;
+}
+
+.taskInput:focus {
+  outline: none !important;
+  border: none !important;
+}

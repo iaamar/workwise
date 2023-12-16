@@ -1,0 +1,50 @@
+{
+
+  "short_name": "WorkWise",
+  "name": "WorkWise Project Management Tool",
+
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo_small.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+
+      "src": "assets/default_project.svg",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/features.svg",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/workwise_large.png",
+      "type": "image/png", 
+      "sizes": "sizeXsize" 
+    },
+    
+    {
+      "src": "assets/workwise.png",
+      "type": "image/png", 
+      "sizes": "sizeXsize" 
+    },
+    {
+     
+
+      "src": "logo_large.png",
+
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
