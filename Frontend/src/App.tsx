@@ -5,12 +5,12 @@ import { ToastContainer } from "react-toastify"; // Import the ToastContainer co
 // Import different page components
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-import ProjectsPage from "./pages/ProjectsPage";
+import ProjectsPage from "./pages/ProjectHome/ProjectsPage";
 import PrivateRoute from "./components/PrivateRoute";
 import ProfilePage from "./pages/ProfilePage";
-import BoardView from "./pages/BoardView";
-import ProjectSettings from "./pages/ProjectSettings";
-import ProjectLayout from "./components/ProjectLayout";
+import BoardView from "./pages/ProjectBoard/BoardView";
+import ProjectSettings from "./pages/ProjectHome/ProjectSettings";
+import BoardLayout from "./pages/ProjectBoard/BoardLayout";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 
@@ -29,7 +29,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:projectId/*" element={<ProjectLayout />}>
+          <Route path="/projects/:projectId/*" element={<BoardLayout />}>
             <Route index element={<Navigate to="board" />} />
             <Route path="board" element={<BoardView />} />
             <Route path="settings" element={<ProjectSettings />} />

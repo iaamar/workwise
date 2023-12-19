@@ -160,9 +160,7 @@ const Login = () => {
           <button
             type="submit"
             className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-white text-md font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-10 uppercase ${
-              isButtonDisabled
-                ? "bg-grey-500 hover:bg-grey-500"
-                : "bg-primary-700 hover:bg-primary-800"
+               "bg-primary-700 hover:bg-primary-800"
             }`}
             disabled={!isValid}
           >
@@ -171,7 +169,7 @@ const Login = () => {
         </form>
       </div>
       <div
-        style={{ position: "absolute", bottom: "0", right: "0%" }}
+        style={{ position: "fixed", bottom: "0", right: "0%" }}
         className="justify-center flex w-full"
       >
         <div className="flex items-center justify-center p-4">

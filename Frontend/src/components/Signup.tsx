@@ -187,14 +187,12 @@ const Signup: React.FC = () => {
             </div>
           ))}
           <button
-  type="submit"
-  className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-white text-md font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-10 uppercase ${
-    isButtonDisabled ? "bg-grey-500" : "bg-primary-700"
-  }`}
-  disabled={isButtonDisabled}
->
-  {translate("signup.button.signup.label")}
-</button>
+            type="submit"
+            className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-white text-md font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-10 uppercase ${"bg-primary-700"}`}
+            disabled={isButtonDisabled}
+          >
+            {translate("signup.button.signup.label")}
+          </button>
         </div>
       </form>
       {loading && <div>Loading...</div>}

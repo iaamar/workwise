@@ -21,6 +21,7 @@
     "express-async-errors": "^3.1.1",
     "fs": "^0.0.1-security",
     "fs-extra": "^11.2.0",
+    "gh-pages": "^6.1.0",
     "handlebars": "^4.7.8",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.1",

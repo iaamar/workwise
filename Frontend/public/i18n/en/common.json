@@ -1,5 +1,5 @@
 {
-  "login.title": "Login to your account",
+  "login.title": "Log into workwise",
   "login.button.login.label": "Login",
   "login.input.email.label": "Email",
   "login.input.password.label": "Password",
@@ -24,7 +24,7 @@
   "signup.input.confirm-password.placeholder": "Confirm Password",
   "signup.button.signup.label": "Signup",
   "signup.login.info": "Already have an account?",
-  "header.title": "WorkWise",
+  "header.title": "WORKWISE",
   "projects.info.no-projects": "You don't have any projects. Create a Project",
   "projects.title": "PROJECTS",
   "projects.button.addprojects": "Add Project",
