@@ -1,0 +1,15 @@
+{
+  "name": "workwise",
+  "version": "1.0.0",
+  "description": "project management tool",
+  "main": "index.js",
+  "scripts": {
+    "install-backend": "cd Backend && npm install",
+    "start-backend": "cd Backend && npm start",
+    "install-frontend": "cd Frontend && npm install",
+    "build-frontend": "cd Frontend && npm run build",
+    "start-frontend": "cd Frontend && npm start"
+  },
+  "author": "amar nagargoje",
+  "license": "ISC"
+}
