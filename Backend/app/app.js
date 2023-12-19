@@ -7,14 +7,14 @@ import "dotenv/config";
 import router from "./routes/index.js";
 const corOptions = {
   credentials: true,
-  origin: "http://localhost:3001",
+  origin: "https://workwise-deploy-backend.onrender.com",
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
 const initialize = (app) => {
   app.use(cors(corOptions)); // use cors middleware
   app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3001");
+    res.header("Access-Control-Allow-Origin", "https://workwise-deploy-backend.onrender.com");
     res.header("Access-Control-Allow-Credentials", true);
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -31,6 +31,9 @@ const initialize = (app) => {
     console.log("Error connecting to MongoDB");
   }
   router(app);
+  app.get("/", (req, res) => {
+    res.status(200).json({message: "Hello Backend!!"});
+  });
 };
 
 export default initialize;
