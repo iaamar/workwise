@@ -42,8 +42,11 @@ export const loginUser = createAsyncThunk(
       const response: LoginResponse = await login(user);
       if (response.status === "success") {
         return response.data;
+        console.log("loginUser in thunk", response.data);
       } else {
+        console.log("loginUser in thunk", response.message);
         return rejectWithValue(response.message);
+      
       }
     } catch (error) {
       return rejectWithValue("Something went wrong");

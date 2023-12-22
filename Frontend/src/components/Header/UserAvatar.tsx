@@ -6,7 +6,7 @@ export const UserAvatar = ({
   image,
   color,
   size = 40,
-  tooltip = false,
+  tooltip,
 }: UserAvatarProps): JSX.Element => {
   const imageMinName = image?.replace(".webp", "-min.webp");
   const imageSrc = size > 80 ? `${image}` : `${image}`;

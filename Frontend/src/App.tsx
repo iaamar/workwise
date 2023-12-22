@@ -16,9 +16,6 @@ import PasswordResetPage from "./pages/PasswordResetPage";
 
 // Main App component
 function App() {
-  fetch("https://workwise-deploy-backend.onrender.com/")
-    .then((res) => res.json())
-    .then((data) => console.log(data)); // This is to keep the backend server awake
   return (
     <>
       {/* Define application routes */}

@@ -29,6 +29,9 @@ import { resetCommentState } from "../../store/slices/comment-slice";
 import { resetTaskState } from "../../store/slices/task-slice";
 import Avatar from "react-avatar";
 import User from "../../models/user";
+import { RiH1 } from "react-icons/ri";
+import { element } from "prop-types";
+import { UserAvatar } from "../../components/Header/UserAvatar";
 const sectionTitles: Record<string, string> = {
   board: "board",
   analytics: "Analytics",
@@ -131,44 +134,28 @@ const BoardView = () => {
               handleSearch={onSearch}
               placeholder={t("board.search.filter.placeholder")}
             />
-            <span className="ml-2 flex justify-evenly flex cursor-pointer items-center bg-primary-light text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-[120px] rounded border-none bg-grey-100 outline outline-2 outline-grey-400 hover:bg-grey-300 ">
-              <div className="z-10 -ml-[5px] rounded-full border-2 border-primary-light bg-white hover:z-20 dark:border-dark-100">
-                <div className="relative w-fit">
-                  <div>
-                    {project?.teamMembers?.map((member: User ) => {
-                      <span
-                      key={member?._id}
-                        className="flex items-center rounded-full"
-                        style={{
-                          width: "40px",
-                          minWidth: "40px",
-                          height: "40px",
-                        }}
-                      >
-                        <Avatar
-                  
-                    size="20"
-                    round={true}
-                    src={member?.photoURL}
-                  />
-                        <img
-                          className="rounded-full object-cover"
-                          alt="Buzz Lightyear"
-                          src={member?.photoURL}
-                          style={{
-                            width: "40px",
-                            minWidth: " 40px",
-                            height: "40px",
-                          }}
-                        />
-                      </span>;
-                    })} 
+            <div className="flex">
+              {project?.teamMembers?.map((member: User) => {
+                return (
+                  <div className="my-0 inline">
+                    <span className="flex">
+                      <div className="z-10 -ml-[5px] rounded-full border-2 border-primary-light bg-white hover:z-20 dark:border-dark-100">
+                        <div className="relative w-fit">
+                          <UserAvatar
+                            name={member?.firstName + " " + member?.lastName}
+                            key={member._id}
+                            image={member?.photoURL}
+                            color="#e97f33"
+                            size={40}
+                            tooltip={true}/>
+                        </div>
+                      </div>
+                    </span>
                   </div>
-                </div>
-              </div>
-            </span>
+                );
+              })}
+            </div>
           </div>
-
           <Outlet />
 
           {/* Kanban Board component */}
