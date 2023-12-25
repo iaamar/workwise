@@ -314,7 +314,7 @@ const CreateWorkItemModel = (props: Props) => {
     <>
       <Model {...{ onClose }}>
         <>
-          <div className="my-4 flex flex-row justify-between mt-5">
+          <div className="my-4 flex flex-row justify-between">
             <h3 className="text-xl font-semibold">
               {t("workitem.title.label")}
             </h3>

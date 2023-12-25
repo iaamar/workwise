@@ -4,7 +4,7 @@ import React from "react";
 
 // CSS class for styling form action button
 const formActionCss =
-  "justify-evenly flex cursor-pointer items-center bg-primary-light text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-full rounded border-none bg-primary-800 outline outline-2 outline-primary-400 hover:bg-primary-600 text-white uppercase";
+  "justify-evenly flex cursor-pointer items-center text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-full rounded border-none bg-primary-800 outline outline-2 outline-primary-400 hover:bg-primary-600 text-white uppercase";
 
 // Interface definition for FormActionProps
 interface FormActionProps {

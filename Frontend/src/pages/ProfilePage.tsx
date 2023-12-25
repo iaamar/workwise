@@ -181,7 +181,7 @@ const ProfilePage = () => {
       <div className="flex justify-between mt-5">
         <span
           onClick={deleteAccount}
-          className="justify-evenly flex cursor-pointer items-center bg-primary-light text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-full rounded border-none bg-error-800 outline outline-2 outline-error-400 hover:bg-error-600 text-white uppercase"
+          className="justify-evenly flex cursor-pointer items-center text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-full rounded border-none bg-error-800 outline outline-2 outline-error-400 hover:bg-error-600 text-white uppercase"
         >
           {t("profile.button.delete.label")}
         </span>
