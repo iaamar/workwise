@@ -29,20 +29,6 @@ export default function KanbanLane({
   const { setNodeRef } = useDroppable({
     id: title,
   });
-  const dispatch: AppDispatch = useDispatch();
-  const [workitems, setWorkitems] = useState<WorkItem[]>([]);
-  const [selectedWorkItem, setSelectedWorkItem] = useState<any>();
-  const [editWorkItem, setEditWorkItem] = useState(false);
-  const [workitem, setWorkitem] = useState<WorkItem>();
-  projectService.getWorkItemsByProjectId(projectId).then((p) => {
-    p?.workitems?.forEach((workitem:any) => {
-      setWorkitem(workitem);
-      setWorkitems((workitems) => [...workitems, workitem]);
-      dispatch(setCurrentWorkItem(workitem));
-      setSelectedWorkItem(workitem);
-      setSelectedWorkItem(workitem);
-    });
-  });
 
   return (
     <>
@@ -78,7 +64,4 @@ export default function KanbanLane({
       </Flex>
     </>
   );
-}
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
 }

@@ -116,21 +116,29 @@ const ProjectSettings = () => {
   const styles: StylesConfig<Option, true> = {
     multiValue: (base: any, state: any) => {
       return state.data.isFixed
-        ? { ...base, backgroundColor: "#868e96" }
-        : { ...base, backgroundColor: "#e9ecef" };
+        ? {
+            ...base,
+            ":hover": {
+              backgroundColor: "grey-600",
+            },
+            borderRadius: "15px",
+            padding: "4px",
+            border: "none",
+          }
+        : { ...base, ":hover": {
+          backgroundColor: "grey-900",
+        }, borderRadius: "15px", padding: "4px", border: "none" };
     },
     multiValueLabel: (base: any, state: any) => {
-      return state.data.isFixed
-        ? { ...base, fontWeight: "bold", color: "white", paddingRight: 6 }
-        : base;
+      return state.data.isFixed ? { ...base } : base;
     },
     multiValueRemove: (base: any, state: any) => {
       return state.data.isFixed
         ? { ...base, display: "none" }
         : {
-            ...base,
-            backgroundColor: "transparent",
-            ":hover": { backgroundColor: "transparent" },
+            ...base, ":hover": {
+              backgroundColor: "grey-200",
+            },
           };
     },
   };
@@ -309,7 +317,10 @@ const ProjectSettings = () => {
           </label>
           <section className="p-2">
             <Avatar size="40" round src={projectOwnerUser?.photoURL} />
-            <span className="font-light" style={{ marginLeft: "10px", background: "transparent" }}>
+            <span
+              className="font-light"
+              style={{ marginLeft: "10px", background: "transparent" }}
+            >
               {projectOwnerUser?.firstName + " " + projectOwnerUser?.lastName}
             </span>
           </section>

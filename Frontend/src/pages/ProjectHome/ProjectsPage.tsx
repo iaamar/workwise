@@ -110,14 +110,15 @@ const ProjectsPage = () => {
               </div>
             </div>
           ) : (
-            projects?.map((project) => (
+            projects?.map((project) => {
+              return (
               <ProjectCard
                 key={project._id}
                 project={project}
                 userId={currentUser?._id ?? ""}
-              />
-            ))
-          )}
+              />)
+              })
+          )}              
         </div>
         <Outlet />
       </div>

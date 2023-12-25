@@ -8,7 +8,6 @@ export const UserAvatar = ({
   size = 40,
   tooltip,
 }: UserAvatarProps): JSX.Element => {
-  const imageMinName = image?.replace(".webp", "-min.webp");
   const imageSrc = size > 80 ? `${image}` : `${image}`;
   const imageSize = {
     width: `${size}px`,

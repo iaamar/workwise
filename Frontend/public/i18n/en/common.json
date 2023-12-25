@@ -69,7 +69,7 @@
   "board.button.board.label": "Board",
   "board.navlink.projects.label": "Projects",
   "board.title.board.label": "Board",
-  "board.search.filter.placeholder": "Filter workitems",
+  "board.search.filter.placeholder": "Filter",
   "board.button.addworkitem.label": "Add a workItem",
   "board.kanban.backlog.label": "Backlog",
   "board.kanban.selected.label": "Selected",

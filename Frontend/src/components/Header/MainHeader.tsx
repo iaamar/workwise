@@ -4,6 +4,7 @@ import { selectCurrentUser } from "../../store/slices/user-slice";
 import { useTranslation } from "react-i18next";
 import { UserProfile } from "./UserProfile";
 import logo from "../../assets/logo.png";
+import { SelectTheme } from "./SelectTheme";
 
 const MainHeader = (): JSX.Element => {
   const { t } = useTranslation("common");
@@ -23,6 +24,7 @@ const MainHeader = (): JSX.Element => {
         </Link>
       </section>
       <section>
+        {/* <SelectTheme/> */}
         <UserProfile />
       </section>
     </header>

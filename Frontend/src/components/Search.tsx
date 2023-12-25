@@ -37,10 +37,10 @@ export const Search = ({ handleSearch, placeholder }: Props): JSX.Element => {
         placeholder={placeholder}
         onChange={handleChange}
         className={cx(
-          "border-1 box-border h-[40px] w-[160px] rounded border-none bg-grey-100 py-2",
+          "border-1 box-border h-[40px] w-[80px] rounded border-none bg-grey-100 py-2",
           "pr-8 pl-2 outline outline-2 outline-grey-400 duration-200 ease-in-out",
           "placeholder:font-primary-light placeholder:text-xs placeholder:text-font-light",
-          "placeholder:duration-200 placeholder:ease-in-out hover:bg-grey-300 focus:w-[200px]",
+          "placeholder:duration-200 placeholder:ease-in-out hover:bg-grey-300 focus:w-[100px]",
           "focus:bg-white focus:shadow-primary-900 focus:outline-primary-900 dark:bg-dark-500",
           "dark:outline-dark-100 dark:placeholder:text-font-main-dark dark:placeholder:opacity-50",
           "dark:placeholder:text-opacity-100 dark:focus:outline-primary-900 dark:focus:bg-dark-500"

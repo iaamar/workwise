@@ -47,7 +47,8 @@ interface Option {
 }
 
 // CustomSelect component definition
-const CustomSelect = ({
+const 
+CustomSelect = ({
   options,
   onChange,
   selectedOptions,
@@ -96,8 +97,8 @@ const CustomSelect = ({
       {value.label === "Lowest" ? (
         <MdKeyboardDoubleArrowDown fill="#57a55a" size={20} />
       ) : null}
-      {includeIcon ? <Avatar size="30" round src={value.avatar} /> : null}
-      <span style={{ marginLeft: "10px", background: "transparent" }}>
+      {includeIcon ? <Avatar color="blue" size="30" round src={value.avatar} /> : null}
+      <span style={{ marginLeft: "10px" }}>
         {value.label}
       </span>
     </div>

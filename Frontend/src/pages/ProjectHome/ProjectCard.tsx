@@ -45,9 +45,7 @@ const ProjectCard = ({
     <div
       onClick={() => onProjectClick(project)}
       className={
-        "w-[400px]" +
-        " " +
-        "group flex rounded shadow-sm outline outline-2 outline-transparent duration-100 ease-linear" +
+        "w-[400px] cursor-pointer group flex rounded shadow-sm outline outline-2 outline-transparent duration-100 ease-linear" +
         "hover:-translate-y-0.5 hover:bg-primary-light hover:text-primary-main hover:shadow-md hover:outline-primary-main dark:bg-dark-200 dark:hover:text-primary-main-dark dark:hover:outline-primary-main-dark"
       }
     >

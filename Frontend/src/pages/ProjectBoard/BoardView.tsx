@@ -32,6 +32,7 @@ import User from "../../models/user";
 import { RiH1 } from "react-icons/ri";
 import { element } from "prop-types";
 import { UserAvatar } from "../../components/Header/UserAvatar";
+import { render } from "@testing-library/react";
 const sectionTitles: Record<string, string> = {
   board: "board",
   analytics: "Analytics",
@@ -64,7 +65,7 @@ const BoardView = () => {
         setLoading(false);
       });
     }
-  }, [dispatch, projectId]);
+  }, [dispatch, projectId, project]);
   const storeWorkItems = useSelector(selectWorkItems);
 
   // Get current location and section
@@ -123,9 +124,9 @@ const BoardView = () => {
           <Outlet />
 
           {/* Action buttons */}
-          <div className="flex space-evenly w-[500] gap-5 mt-5 mb-10">
+          <div className="flex space-evenly w-[500] gap-5 mt-5 mb-10 items-center">
             <button
-              className="justify-evenly flex cursor-pointer items-center bg-primary-light text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-[120px] rounded border-none bg-grey-100 outline outline-2 outline-grey-400 hover:bg-grey-300 "
+              className="justify-evenly flex cursor-pointer items-center text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-[120px] rounded border-none bg-grey-100 outline outline-2 outline-grey-400 hover:bg-grey-300 "
               onClick={() => setIsOpen(true)}
             >
               <FaPlus /> {t("board.button.addworkitem.label")}
@@ -139,14 +140,14 @@ const BoardView = () => {
                 return (
                   <div className="my-0 inline">
                     <span className="flex">
-                      <div className="z-10 -ml-[5px] rounded-full border-2 border-primary-light bg-white hover:z-20 dark:border-dark-100">
+                      <div className="z-10 -ml-[5px] rounded-full border-2 hover:z-20 hover:border-primary-700 hover:cursor-pointer hover:scale-105  hover:shadow-lg opacity-80 hover:opacity-100 transition-all duration-350">
                         <div className="relative w-fit">
                           <UserAvatar
                             name={member?.firstName + " " + member?.lastName}
                             key={member._id}
                             image={member?.photoURL}
                             color="#e97f33"
-                            size={40}
+                            size={35}
                             tooltip={true}/>
                         </div>
                       </div>

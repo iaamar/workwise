@@ -23,6 +23,7 @@ export const UserProfile = (): JSX.Element => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="px-1 py-1 rounded-full outline-2 outline-grey-300 hover:outline-primary-900">
         <UserAvatar
+          tooltip={false}
           name={currentUser?.firstName}
           image={currentUser?.photoURL}
         />
@@ -30,7 +31,7 @@ export const UserProfile = (): JSX.Element => {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
-            sideOffset={7}
+          sideOffset={7}
           className={cx(
             "z-50 rounded-lg shadow-xl bg-white",
             "radix-side-bottom:animate-slide-down radix-side-top:animate-slide-up"
@@ -39,6 +40,7 @@ export const UserProfile = (): JSX.Element => {
           <DropdownMenu.Item className="flex p-5 hover:bg-primary-100 ">
             <Link to={`/profile`} className="flex flex-col items-center">
               <UserAvatar
+                tooltip={false}
                 name={currentUser?.firstName}
                 image={currentUser?.photoURL}
                 size={60}
@@ -55,7 +57,9 @@ export const UserProfile = (): JSX.Element => {
               className="flex w-full items-center gap-2 rounded p-2 font-bold text-error-900 hover:bg-error-200"
               aria-label="Log out"
             >
-              <span className="hover:text-error-900">{t("profile.button.logout.label")}</span>
+              <span className="hover:text-error-900">
+                {t("profile.button.logout.label")}
+              </span>
             </span>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
