@@ -5,34 +5,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import * as projectService from "../../services/project-service";
 import Project from "../../models/project";
-import WorkItemCard from "../../components/WorkItemCard";
 import {
   fetchProjectDetails,
   resetCurrentProject,
 } from "../../store/slices/project-slice";
 import {
-  createNewWorkItem,
   selectWorkItems,
   setCurrentWorkItem,
   workitemsFetched,
 } from "../../store/slices/workitem-slice";
-import { ChakraProvider, theme, Text } from "@chakra-ui/react";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import KanbanBoard from "../../components/KanbanBoard/KanbanBoard";
 import { selectCurrentUser } from "../../store/slices/user-slice";
 import CreateWorkItemModel from "../../components/CreateWorkItemModel";
 import { FaPlus } from "react-icons/fa";
 import { Search } from "../../components/Search";
 import { useTranslation } from "react-i18next";
-import { use } from "i18next";
-import { selectProjectById } from "../../store/slices/project-slice";
 import { resetCommentState } from "../../store/slices/comment-slice";
 import { resetTaskState } from "../../store/slices/task-slice";
-import Avatar from "react-avatar";
 import User from "../../models/user";
-import { RiH1 } from "react-icons/ri";
-import { element } from "prop-types";
 import { UserAvatar } from "../../components/Header/UserAvatar";
-import { render } from "@testing-library/react";
 const sectionTitles: Record<string, string> = {
   board: "board",
   analytics: "Analytics",
@@ -56,7 +48,7 @@ const BoardView = () => {
     dispatch(setCurrentWorkItem(null));
     dispatch(resetCommentState());
     dispatch(resetTaskState());
-    setLoading(true);
+    setLoading(false);
     if (projectId) {
       projectService.getProjectById(projectId).then((project) => {
         setProject(project);
@@ -94,15 +86,17 @@ const BoardView = () => {
   };
 
   useEffect(() => {
-    console.log("BoardView useEffect");
     const fetchData = async () => {
       await dispatch(fetchProjectDetails(projectId ?? "") as any);
     };
     fetchData();
-  }, []);
+  }, [dispatch, projectId]);
 
   const { t } = useTranslation("common");
 
+  const handleClick = () => {
+    setIsOpen(true);
+  };
   // Render the component
   return (
     <>
@@ -127,7 +121,7 @@ const BoardView = () => {
           <div className="flex space-evenly w-[500] gap-5 mt-5 mb-10 items-center">
             <button
               className="justify-evenly flex cursor-pointer items-center text-xs dark:focus-visible:outline-white border-1 box-border h-[40px] w-[120px] rounded border-none bg-grey-100 outline outline-2 outline-grey-400 hover:bg-grey-300 "
-              onClick={() => setIsOpen(true)}
+              onClick={() => handleClick()}
             >
               <FaPlus /> {t("board.button.addworkitem.label")}
             </button>
@@ -148,7 +142,8 @@ const BoardView = () => {
                             image={member?.photoURL}
                             color="#e97f33"
                             size={35}
-                            tooltip={true}/>
+                            tooltip={true}
+                          />
                         </div>
                       </div>
                     </span>

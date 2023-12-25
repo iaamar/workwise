@@ -205,42 +205,6 @@ const CreateWorkItemModel = (props: Props) => {
     },
   };
 
-  const itemStatusStyles: StylesConfig<Option, true> = {
-    option: (provided: any, state: any) => ({
-      ...provided,
-      color: state.data.color,
-      backgroundColor: state.data.bgcolor,
-      borderRadius: 5,
-      outline: "none",
-      margin: "0 0 10px 5px",
-      padding: "3px 9px 3px 0",
-      fontWeight: "600",
-      width: "fit-content",
-    }),
-    control: (provided: any, state: any) => ({
-      ...provided,
-      width: "fit-content",
-    }),
-    menu: (provided: any, state: any) => ({
-      ...provided,
-      width: "fit-content",
-      padding: "10px",
-    }),
-    singleValue: (provided: any, state: any) => {
-      return {
-        ...provided,
-        color: state.data.color,
-        backgroundColor: state.data.bgcolor,
-        borderRadius: 5,
-        outline: "none",
-        margin: "0",
-        padding: "3px 9px 3px 0",
-        fontWeight: "600",
-        width: "fit-content",
-      };
-    },
-  };
-
   // Assignees options
   const assignees = teamMembers
     ? teamMembers.map((user) => ({
@@ -258,7 +222,6 @@ const CreateWorkItemModel = (props: Props) => {
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    console.log("workItem", workItem);
     await dispatch(createNewWorkItem({ ...workItem, projectId, ownerId }));
     onClose();
   };
@@ -351,19 +314,19 @@ const CreateWorkItemModel = (props: Props) => {
     <>
       <Model {...{ onClose }}>
         <>
-          <div className="my-4 flex flex-row justify-between">
+          <div className="my-4 flex flex-row justify-between mt-5">
             <h3 className="text-xl font-semibold">
               {t("workitem.title.label")}
             </h3>
             <RiCloseLine
-              size={32}
+              size={22}
               onClick={onClose}
               className="cursor-pointer"
             />
           </div>
           <form
             onSubmit={handleCreateWorkItem}
-            className="flex flex-col justify-between h-full gap-4"
+            className="flex flex-col justify-between h-full gap-2"
           >
             <div>
               <label className="text-label font-medium">
@@ -437,14 +400,12 @@ const CreateWorkItemModel = (props: Props) => {
                 selectedOptions={selectedPriority}
                 options={workItemPriorityOptions}
                 onChange={handlePriorityChange}
-                isMulti={false}
                 customStyles={itemPriorityStyles}
                 includeIcon={false}
-                isClearable={false}
               />
             </div>
 
-            <div className="flex flex-row justify-end mb-3">
+            <div className="flex flex-row justify-end mb-5">
               <button
                 type="submit"
                 className="bg-primary-900 text-white rounded-md py-2 px-4 hover:bg-primary-700"

@@ -98,7 +98,7 @@ const KanbanCard = ({ title, workitem, index, parent, teamMembers }: Props) => {
         >
           {/* Title and priority information */}
           <div className="font-medium flex text-primary justify-between">
-            {workitem.title}
+          <h1 className="line-clamp-2">{workitem.title}</h1>  
             <div className="itemPriority">
               {workitem.priority === "highest" ? (
                 <FaArrowUp fill="#cd1316" size={15} />
@@ -119,7 +119,7 @@ const KanbanCard = ({ title, workitem, index, parent, teamMembers }: Props) => {
           </div>
 
           {/* ID and type information */}
-          <div className="flex flex-row justify-between items-end">
+          <div className="flex flex-row justify-between items-end mb-2">
             <div className="itemId flex flex-row justify-between items-center gap-3">
               <div>
                 {/* Type icons based on work item type */}
@@ -150,7 +150,6 @@ const KanbanCard = ({ title, workitem, index, parent, teamMembers }: Props) => {
               ))}
             </div>
           </div>
-          <div className="flex"></div>
         </div>
       </Flex>
 

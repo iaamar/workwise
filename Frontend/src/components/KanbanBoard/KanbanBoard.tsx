@@ -87,7 +87,7 @@ const KanbanBoard = (props: Props) => {
     })
   );
 
-  onClose();
+  //onClose();
   const { t } = useTranslation("common");
 
   // Render the KanbanBoard component

@@ -91,7 +91,6 @@ export const workItemSlice = createSlice({
       state.data = state.data.filter((workitem) => workitem._id !== workitemId);
     },
     workitemsFetched: (state, action: PayloadAction<any>) => {
-      console.log("workitemsFetched", action.payload);
       state.data = action.payload;
     },
     setCurrentWorkItem: (state, action: PayloadAction<WorkItem | null>) => {

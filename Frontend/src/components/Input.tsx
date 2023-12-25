@@ -36,7 +36,6 @@ const Input = ({
   pattern = undefined,
 }: InputProps) => {
   return (
-    <div className="my-5">
       <input
         onChange={handleChange}
         value={value}
@@ -49,7 +48,6 @@ const Input = ({
         onBlur={handleBlur}
         disabled={disabled}
       />
-    </div>
   );
 };
 
