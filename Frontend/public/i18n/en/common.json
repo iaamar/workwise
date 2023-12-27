@@ -28,7 +28,7 @@
   "projects.info.no-projects": "You don't have any projects. Create a Project",
   "projects.title": "PROJECTS",
   "projects.button.addprojects": "Add Project",
-  "projects.input.filter.label": "Filter Projects",
+  "projects.input.filter.label": "Filter",
   "projects.button.deleteproject.label": "Delete Project",
   "projectcard.title": "Create Project",
   "projectcard.input.projectname.label": "Project Name",
