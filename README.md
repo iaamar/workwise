@@ -1,14 +1,11 @@
 # WorkWise - Advanced Project Management Tool for Engineers
 
-## Tech Stack
+## DEMO
 
-<img src="Workwise_SS/Techstack.png" alt="Workwise Technology Stack" width="50%" />
-
-
-
-
-
-
+# display mp4
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="Workwise_SS/WorkWiseProjectDemo.mp4" allowfullscreen=""></iframe>
+</div>
 
 
 - **Frontend**: React
