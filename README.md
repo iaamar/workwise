@@ -2,11 +2,6 @@
 
 ## DEMO
 
-# display mp4
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="Workwise_SS/WorkWiseProjectDemo.mp4" allowfullscreen=""></iframe>
-</div>
-
 
 - **Frontend**: React
 - **Backend**: Node.js
